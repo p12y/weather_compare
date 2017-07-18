@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {OWM_API_KEY} from '../config.js';
 import axios from 'axios';
 import Chart from '../components/chart';
+import Map from '../components/map';
 
 class WeatherList extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class WeatherList extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="col-md-3">
-                {this.state.data.city.name}
+                <Map city={this.state.data.city.name} />
               </div>
               <div className="col-md-3">
                 <Chart color="red" data={temps} type="Temperature" panelClass="danger" />
