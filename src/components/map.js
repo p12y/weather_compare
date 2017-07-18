@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import GoogleMap from 'google-map-react';
 
 class Map extends Component {
   componentDidMount() {
