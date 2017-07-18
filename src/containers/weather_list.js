@@ -1,25 +1,24 @@
 import React, {Component} from 'react';
-import {OWM_API_KEY} from '../config.js';
-import axios from 'axios';
 import Chart from '../components/chart';
 import Map from '../components/map';
 import {connect} from 'react-redux';
 
 class WeatherList extends Component {
-  renderWeather(data) {
-    const temps = data.list.map(item => item.main.temp);
-    const humidities = data.list.map(item => item.main.humidity);
-    const pressures = data.list.map(item => item.main.pressure);
-    const lat = data.city.coord.lat;
-    const lng = data.city.coord.lon;
+  renderWeather({list, city}) {
+    const temps = list.map(item => item.main.temp);
+    const humidities = list.map(item => item.main.humidity);
+    const pressures = list.map(item => item.main.pressure);
+    const lat = city.coord.lat;
+    const lng = city.coord.lon;
 
     return (
-      <div key={`${data.city.name}-${Math.random(1, 4)}`} className="row weather">
+      <div key={`${city.name}-${Math.random(1, 4)}`} className="row weather">
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="col-md-3">
               <Map center={{lat, lng}} zoom={11}  />
             </div>
+
             <div className="col-md-3">
               <Chart 
                 color="red" 
@@ -29,6 +28,7 @@ class WeatherList extends Component {
                 unit="°C" 
               />
             </div>
+
             <div className="col-md-3">
               <Chart 
                 color="blue" 
@@ -38,6 +38,7 @@ class WeatherList extends Component {
                 unit="%" 
               />
             </div>
+
             <div className="col-md-3">
               <Chart 
                 color="green" 
@@ -54,11 +55,11 @@ class WeatherList extends Component {
   }
 
   render() {
-      return (
-        <div>
-          {this.props.weather.map(this.renderWeather)}
-        </div>
-      );
+    return (
+      <div>
+        {this.props.weather.map(this.renderWeather)}
+      </div>
+    );
   }
 }
 
