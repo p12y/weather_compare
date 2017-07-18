@@ -21,13 +21,31 @@ class WeatherList extends Component {
               <Map center={{lat, lng}} zoom={11}  />
             </div>
             <div className="col-md-3">
-              <Chart color="red" data={temps} type="Temperature" panelClass="danger" />
+              <Chart 
+                color="red" 
+                data={temps} 
+                type="Temperature" 
+                panelClass="danger"
+                unit="°C" 
+              />
             </div>
             <div className="col-md-3">
-              <Chart color="blue" data={humidities} type="Humidity" panelClass="primary" />
+              <Chart 
+                color="blue" 
+                data={humidities} 
+                type="Humidity" 
+                panelClass="primary"
+                unit="%" 
+              />
             </div>
             <div className="col-md-3">
-              <Chart color="green" data={pressures} type="Pressure" panelClass="success" />
+              <Chart 
+                color="green" 
+                data={pressures} 
+                type="Pressure" 
+                panelClass="success" 
+                unit="hPa"
+              />
             </div>
           </div>
         </div>
