@@ -11,7 +11,7 @@ class WeatherList extends Component {
   }
 
   componentDidMount() {
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=London,us&mode=json&units=metric&appid=${OWM_API_KEY}`;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=London,uk&mode=json&units=metric&appid=${OWM_API_KEY}`;
     axios.get(url).then((res) => {
       this.setState({data: res.data});
       console.log(res.data);
@@ -23,13 +23,15 @@ class WeatherList extends Component {
       const temps = this.state.data.list.map(item => item.main.temp);
       const humidities = this.state.data.list.map(item => item.main.humidity);
       const pressures = this.state.data.list.map(item => item.main.pressure);
+      const lat = this.state.data.city.coord.lat;
+      const lng = this.state.data.city.coord.lon;
 
       return (
-        <div className="row">
+        <div className="row weather">
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="col-md-3">
-                <Map city={this.state.data.city.name} />
+                <Map center={{lat, lng}} zoom={11}  />
               </div>
               <div className="col-md-3">
                 <Chart color="red" data={temps} type="Temperature" panelClass="danger" />

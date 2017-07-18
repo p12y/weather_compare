@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+select.form-control {
+  margin-bottom: 2em !important;
+}
+
+.row.weather {
+  margin-top: 2em;
+}
