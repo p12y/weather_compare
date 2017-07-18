@@ -22,20 +22,24 @@ class WeatherList extends Component {
       const temps = this.state.data.list.map(item => item.main.temp);
       const humidities = this.state.data.list.map(item => item.main.humidity);
       const pressures = this.state.data.list.map(item => item.main.pressure);
-      
+
       return (
         <div className="row">
-          <div className="col-md-3">
-            {this.state.data.city.name}
-          </div>
-          <div className="col-md-3">
-            <Chart data={temps} />
-          </div>
-          <div className="col-md-3">
-            <Chart data={humidities} />
-          </div>
-          <div className="col-md-3">
-            <Chart data={pressures} />
+          <div className="panel panel-default">
+            <div className="panel-body">
+              <div className="col-md-3">
+                {this.state.data.city.name}
+              </div>
+              <div className="col-md-3">
+                <Chart color="red" data={temps} type="Temperature" panelClass="danger" />
+              </div>
+              <div className="col-md-3">
+                <Chart color="blue" data={humidities} type="Humidity" panelClass="primary" />
+              </div>
+              <div className="col-md-3">
+                <Chart color="green" data={pressures} type="Pressure" panelClass="success" />
+              </div>
+            </div>
           </div>
         </div>
       );
