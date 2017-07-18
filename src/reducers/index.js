@@ -1,7 +1,7 @@
 import React from 'react';
-import {combineReducers} from 'react-redux';
+import {combineReducers} from 'redux';
 import weather from './weather';
 
-export const reducer = combineReducers({
+export default combineReducers({
   weather
 });
