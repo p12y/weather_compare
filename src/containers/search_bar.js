@@ -21,7 +21,8 @@ class SearchBar extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
 
-    this.props.getWeather({city: this.state.city, country: this.state.country})
+    this.props.getWeather({city: this.state.city, country: this.state.country});
+    this.setState({city: ''});
   }
 
   handleInputChange(event) {
@@ -31,7 +32,7 @@ class SearchBar extends Component {
 
   handleSelectChange(event) {
     const country = event.target.value;
-    this.setState({country});
+    this.setState({country, city: ''});
   }
 
   render() {
@@ -55,7 +56,7 @@ class SearchBar extends Component {
               />
 
               <span className="input-group-btn">
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Search</button>
               </span>
             </div>
           </form> 

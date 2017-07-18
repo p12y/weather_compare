@@ -14,18 +14,22 @@ class WeatherList extends Component {
     const lng = data.city.coord.lon;
 
     return (
-      <div key={`${data.city.name}-${Math.random(1, 4)}`}>
-        <div className="col-md-3">
-          <Map center={{lat, lng}} zoom={11}  />
-        </div>
-        <div className="col-md-3">
-          <Chart color="red" data={temps} type="Temperature" panelClass="danger" />
-        </div>
-        <div className="col-md-3">
-          <Chart color="blue" data={humidities} type="Humidity" panelClass="primary" />
-        </div>
-        <div className="col-md-3">
-          <Chart color="green" data={pressures} type="Pressure" panelClass="success" />
+      <div key={`${data.city.name}-${Math.random(1, 4)}`} className="row weather">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <div className="col-md-3">
+              <Map center={{lat, lng}} zoom={11}  />
+            </div>
+            <div className="col-md-3">
+              <Chart color="red" data={temps} type="Temperature" panelClass="danger" />
+            </div>
+            <div className="col-md-3">
+              <Chart color="blue" data={humidities} type="Humidity" panelClass="primary" />
+            </div>
+            <div className="col-md-3">
+              <Chart color="green" data={pressures} type="Pressure" panelClass="success" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -33,12 +37,8 @@ class WeatherList extends Component {
 
   render() {
       return (
-        <div className="row weather">
-          <div className="panel panel-default">
-            <div className="panel-body">
-              {this.props.weather.map(this.renderWeather)}
-            </div>
-          </div>
+        <div>
+          {this.props.weather.map(this.renderWeather)}
         </div>
       );
   }
