@@ -16,7 +16,7 @@ class WeatherList extends Component {
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="col-md-3">
-              <Map center={{lat, lng}} zoom={11}  />
+              <Map lat={lat} lng={lng} zoom={11}  />
             </div>
 
             <div className="col-md-3">

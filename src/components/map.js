@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import GoogleMap from 'google-map-react';
 
 class Map extends Component {
+  componentDidMount() {
+    new window.google.maps.Map(this.refs.map, {
+      zoom: 11,
+      center: {
+        lat: this.props.lat,
+        lng: this.props.lng
+      }
+    });
+  }
+
   render() {
     return (
       <div className={'panel panel-default'}>
@@ -9,11 +19,7 @@ class Map extends Component {
           <h4 className="panel-title">City</h4>
         </div>
         <div className="panel-body">
-          <div style={{width: '100%', height: '150px'}}>
-            <GoogleMap
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            />
+          <div ref="map" style={{width: '100%', height: '150px'}}>
           </div>
         </div>
       </div>
