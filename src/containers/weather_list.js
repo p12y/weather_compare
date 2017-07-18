@@ -3,21 +3,9 @@ import {OWM_API_KEY} from '../config.js';
 import axios from 'axios';
 import Chart from '../components/chart';
 import Map from '../components/map';
+import {connect} from 'react-redux';
 
 class WeatherList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {data: null};
-  }
-
-  componentDidMount() {
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=London,uk&mode=json&units=metric&appid=${OWM_API_KEY}`;
-    axios.get(url).then((res) => {
-      this.setState({data: res.data});
-      console.log(res.data);
-    });
-  }
-
   render() {
     if (this.state.data) {
       const temps = this.state.data.list.map(item => item.main.temp);
@@ -51,4 +39,8 @@ class WeatherList extends Component {
   }
 }
 
-export default WeatherList;
+function mapStateToProps({weather}) {
+  return {weather};
+}
+
+export default connect(mapStateToProps)(WeatherList);
