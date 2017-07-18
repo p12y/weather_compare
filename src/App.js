@@ -6,7 +6,10 @@ import WeatherList from './containers/weather_list';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container">
+        <div class="page-header">
+          <h3>Weather Compare<br/><small>Compare the weather in your favourite cities</small></h3>
+        </div>
         <SearchBar />
         <WeatherList />
       </div>
