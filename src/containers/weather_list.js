@@ -14,7 +14,7 @@ class WeatherList extends Component {
     const lng = data.city.coord.lon;
 
     return (
-      <div>
+      <div key={`${data.city.name}-${Math.random(1, 4)}`}>
         <div className="col-md-3">
           <Map center={{lat, lng}} zoom={11}  />
         </div>
